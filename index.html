@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b1020" id="themeMeta">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>إبراهيم ❤️ يارا — نبات • جماد • حيوان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0b1020;--g1:#3a2260;--g2:#4a1838;
+  --glass:rgba(22,31,54,.68);--glass2:rgba(255,255,255,.06);
+  --text:#f8fafc;--muted:#a9b4c8;--line:rgba(255,255,255,.13);--input:rgba(8,13,28,.72);
+  --accent:#ff4f8b;--accent2:#7c5cff;--good:#31d0aa;--warn:#ffd166;--danger:#ff667d;
+  --shadow:0 14px 40px rgba(0,0,0,.35);
+}
+[data-theme=light]{
+  color-scheme:light;
+  --bg:#fff3f8;--g1:#ffd3e6;--g2:#ddd2ff;
+  --glass:rgba(255,255,255,.78);--glass2:rgba(90,50,140,.07);
+  --text:#241a3d;--muted:#6d6888;--line:rgba(90,50,140,.18);--input:rgba(255,255,255,.96);
+  --shadow:0 14px 34px rgba(120,70,160,.18);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;min-height:100dvh;background:var(--bg);color:var(--text);
+  font-family:"Cairo",system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;overflow-x:hidden;transition:background .3s,color .3s}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;border:0;touch-action:manipulation}
+.hidden{display:none!important}
+
+/* background */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;
+  background:radial-gradient(circle at 15% 0%,var(--g1) 0,transparent 42%),radial-gradient(circle at 95% 10%,var(--g2) 0,transparent 36%),var(--bg)}
+.bg span{position:absolute;bottom:-40px;opacity:0;animation:floatUp linear infinite;user-select:none}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0);opacity:0}12%{opacity:.5}100%{transform:translateY(-110vh) rotate(40deg);opacity:0}}
+
+.app{width:min(640px,100%);margin:0 auto;padding:calc(10px + env(safe-area-inset-top)) 14px calc(28px + env(safe-area-inset-bottom))}
+.topbar{display:flex;justify-content:space-between;align-items:center;height:44px}
+.icon-btn{width:42px;height:42px;border-radius:14px;background:var(--glass);border:1px solid var(--line);font-size:19px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.screen{animation:enter .45s ease both}
+@keyframes enter{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+
+.card{background:var(--glass);border:1px solid var(--line);border-radius:26px;padding:18px;margin:12px 0;box-shadow:var(--shadow);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+h1,h2,h3{margin:0}
+h2{font-size:20px}
+.muted{color:var(--muted)}
+.small{font-size:12px;color:var(--muted)}
+.center{text-align:center}
+.notice{padding:12px 14px;border-radius:16px;background:var(--glass2);font-size:13.5px;line-height:1.7;color:var(--muted)}
+
+/* hero */
+.hero{text-align:center;padding:6px 0 10px}
+.logo{display:inline-flex;align-items:center;gap:12px;font-weight:900;font-size:clamp(28px,8.5vw,44px);line-height:1.2}
+.logo .hrt{font-size:.85em;animation:beat 1.6s ease-in-out infinite;filter:drop-shadow(0 0 14px #ff4f8b88)}
+@keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.22)}28%{transform:scale(1)}42%{transform:scale(1.14)}}
+.tagline{font-size:17px;font-weight:700;margin-top:2px;color:var(--text)}
+.flags{margin-top:6px;font-size:14px;color:var(--muted)}
+
+/* forms */
+label{display:block;color:var(--muted);font-size:13px;margin:12px 0 6px}
+input{width:100%;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:16px;padding:0 15px;height:52px;font-size:16px;outline:none;transition:border-color .2s,box-shadow .2s}
+input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,79,139,.2)}
+.btn{width:100%;min-height:54px;border-radius:17px;padding:10px 16px;color:#fff;font-weight:900;font-size:16.5px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 8px 22px rgba(255,79,139,.28);transition:transform .12s,opacity .2s}
+.btn:active{transform:scale(.97)}
+.btn:disabled{opacity:.45;box-shadow:none}
+.btn.good{background:linear-gradient(135deg,#12a386,#31d0aa);box-shadow:0 8px 22px rgba(49,208,170,.25)}
+.btn.soft{background:var(--glass2);color:var(--text);box-shadow:none;border:1px solid var(--line)}
+.btn.sm{min-height:46px;font-size:15px}
+.gap{height:10px}
+.row{display:flex;gap:10px}
+.row>*{flex:1;min-width:0}
+:focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
+
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;background:var(--glass2);border-radius:18px;margin-bottom:6px}
+.seg button{height:44px;border-radius:14px;background:transparent;font-weight:800;color:var(--muted)}
+.seg button.on{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+
+/* lobby */
+.roomname{text-align:center;font-weight:800;color:var(--muted);font-size:15px}
+.code{font-size:56px;font-weight:900;letter-spacing:12px;text-align:center;direction:ltr;padding:6px 0 0 12px;
+  background:linear-gradient(135deg,#fff,#ffb3cf);-webkit-background-clip:text;background-clip:text;color:transparent}
+[data-theme=light] .code{background:linear-gradient(135deg,#d6246e,#6a45e8);-webkit-background-clip:text;background-clip:text}
+.players{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.player{background:var(--glass2);border:1px solid var(--line);border-radius:18px;padding:13px;text-align:center}
+.player b{display:block;font-size:16px}
+.presence{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-size:12.5px;color:var(--muted)}
+.dot{width:9px;height:9px;border-radius:50%;background:#64708a}
+.player.on .dot{background:var(--good);box-shadow:0 0 10px var(--good)}
+.player.on .presence{color:var(--text)}
+.ready{text-align:center;font-size:20px;font-weight:900;margin:6px 0 12px;animation:beat 1.8s ease-in-out infinite}
+.chips{display:flex;gap:8px;justify-content:center;margin:8px 0 12px}
+.chip{min-width:74px;height:42px;border-radius:14px;background:var(--glass2);border:1px solid var(--line);font-weight:800;color:var(--muted)}
+.chip.on{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:transparent}
+
+/* stage (countdown + letter wheel) */
+.stage{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:min(70dvh,520px);gap:18px}
+.stage-round{font-weight:800;color:var(--muted)}
+.orb{position:relative;width:min(64vw,250px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center}
+.orb::before{content:"";position:absolute;inset:0;border-radius:50%;padding:6px;
+  background:conic-gradient(from 0deg,var(--accent),var(--accent2),var(--good),var(--accent));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.orb.spin::before{animation:rot .9s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.orb-in{width:86%;aspect-ratio:1;border-radius:50%;background:var(--glass);display:grid;place-items:center;box-shadow:inset 0 0 40px rgba(255,79,139,.18)}
+.orb-txt{font-size:clamp(76px,26vw,130px);font-weight:900;line-height:1;text-shadow:0 0 34px rgba(255,79,139,.55)}
+.orb-txt.pop{animation:pop .55s cubic-bezier(.2,1.4,.4,1) both}
+.orb-txt.tickA{animation:tickA .09s ease-out both}
+@keyframes pop{0%{transform:scale(.35);opacity:0}60%{transform:scale(1.18);opacity:1}100%{transform:scale(1)}}
+@keyframes tickA{from{transform:translateY(-14px);opacity:.3}to{transform:none;opacity:1}}
+.stage-cap{font-size:22px;font-weight:900;min-height:34px}
+
+/* game */
+.hud{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:800;font-size:14px}
+.pill{padding:6px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line)}
+.pill.score{color:var(--warn)}
+.playtop{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;margin:10px 0}
+.ring{--tc:var(--good);position:relative;width:112px;height:112px}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .bgc{fill:none;stroke:var(--glass2);stroke-width:9}
+.ring .fg{fill:none;stroke:var(--tc);stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset .25s linear,stroke .3s;filter:drop-shadow(0 0 6px var(--tc))}
+.ring .num{position:absolute;inset:0;display:grid;place-items:center;font-size:34px;font-weight:900;color:var(--tc)}
+.ring.urgent{animation:shake .5s infinite}
+.ring.urgent .num{animation:throb .5s infinite}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+@keyframes throb{50%{transform:scale(1.25)}}
+.letterbox{border-radius:22px;padding:8px 10px;text-align:center;background:linear-gradient(145deg,rgba(255,79,139,.22),rgba(124,92,255,.22));border:1px solid var(--line)}
+.letterbox small{display:block;color:var(--muted);font-size:12px}
+.letterbox b{display:block;font-size:64px;line-height:1.05;font-weight:900;text-shadow:0 0 26px rgba(255,79,139,.55)}
+.cats{display:grid;gap:9px}
+.cat{background:var(--glass2);border:1px solid var(--line);border-radius:20px;padding:11px 12px 12px;transition:border-color .2s,background .2s}
+.cat.ok{border-color:var(--good);background:rgba(49,208,170,.1)}
+.cat.bad{border-color:var(--danger)}
+.cat-h{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.cat-i{font-size:24px}
+.cat-h b{display:block;font-size:16px;line-height:1.2}
+.cat-h small{color:var(--muted);font-size:12.5px}
+.cat-h small .lt{color:var(--accent);font-size:15px}
+.mark{margin-inline-start:auto;font-size:22px;min-width:26px;text-align:center}
+.mark.pop{animation:pop .4s both}
+.status{text-align:center;min-height:22px;color:var(--muted);font-size:13.5px;margin-top:8px}
+.reacts{display:flex;justify-content:space-between;gap:6px;margin-top:10px}
+.reacts button{flex:1;height:46px;border-radius:14px;background:var(--glass2);border:1px solid var(--line);font-size:22px}
+.reacts button:active{transform:scale(1.2)}
+
+/* results */
+.vs{display:grid;grid-template-columns:70px 1fr 1fr;gap:6px;align-items:stretch}
+.vs .h{font-weight:800;text-align:center;font-size:14px;padding:6px 2px;color:var(--muted)}
+.vs .cl{display:grid;place-items:center;font-size:13px;font-weight:800;text-align:center;line-height:1.3}
+.vs .cl span{font-size:22px;display:block}
+.cell{border-radius:14px;padding:8px 6px;text-align:center;background:var(--glass2);border:1px solid var(--line);min-width:0}
+.cell .w{display:block;font-weight:800;font-size:16px;overflow-wrap:anywhere}
+.cell .p{display:block;font-weight:900;font-size:18px;margin-top:2px}
+.cell .l{display:block;font-size:11px;color:var(--muted)}
+.cell.ok{border-color:rgba(49,208,170,.6)}.cell.ok .p{color:var(--good)}
+.cell.dup{border-color:rgba(255,209,102,.6)}.cell.dup .p{color:var(--warn)}
+.cell.bad .p{color:var(--danger)}
+.tot{background:linear-gradient(135deg,rgba(255,79,139,.2),rgba(124,92,255,.2));border-color:transparent}
+.tot .p{font-size:26px}
+.lead{margin-top:12px;text-align:center;font-size:19px;font-weight:900;padding:12px;border-radius:18px;background:var(--glass2)}
+
+/* final */
+.final{text-align:center}
+.final .big{font-size:26px;font-weight:900;margin:6px 0}
+.final .scoreline{display:flex;justify-content:center;align-items:center;gap:14px;margin:16px 0}
+.final .side{flex:1}
+.final .side b{display:block;font-size:17px}
+.final .side .n{font-size:54px;font-weight:900;line-height:1.1}
+.final .side.win .n{color:var(--warn);text-shadow:0 0 24px rgba(255,209,102,.6)}
+.final .sep{font-size:26px}
+
+/* memories */
+.mem{background:var(--glass2);border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:10px;line-height:1.9}
+.mem .t{font-weight:900;font-size:17px}
+.mem .win{color:var(--warn);font-weight:900}
+
+.floaters{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.fl{position:absolute;bottom:14%;padding:8px 14px;border-radius:999px;background:var(--glass);border:1px solid var(--line);font-weight:800;font-size:18px;white-space:nowrap;
+  animation:rise 2.4s ease-out forwards;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.fl.heart{background:none;border:0;font-size:28px;backdrop-filter:none;animation-duration:3s}
+@keyframes rise{0%{transform:translateY(0) scale(.7);opacity:0}12%{opacity:1;transform:translateY(-20px) scale(1)}100%{transform:translateY(-52vh) scale(1);opacity:0}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#000c;color:#fff;padding:11px 18px;border-radius:999px;font-size:14px;font-weight:700;opacity:0;transition:.25s;z-index:60;pointer-events:none;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:12px}
+
+@media(max-width:380px){.code{font-size:46px;letter-spacing:8px}.ring{width:96px;height:96px}.letterbox b{font-size:54px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.bg span{display:none}}
+</style>
+</head>
+<body>
+<div class="bg" id="bg" aria-hidden="true"></div>
+<div class="floaters" id="floaters" aria-hidden="true"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<main class="app">
+  <div class="topbar">
+    <button class="icon-btn" id="themeBtn" aria-label="تبديل الوضع الداكن والفاتح">🌙</button>
+    <button class="icon-btn" id="soundBtn" aria-label="كتم الأصوات أو تشغيلها">🔊</button>
+  </div>
+
+  <!-- HOME -->
+  <section id="home" class="screen">
+    <div class="hero">
+      <div class="logo"><span>إبراهيم</span><span class="hrt">❤️</span><span>يارا</span></div>
+      <div class="tagline">نبات • جماد • حيوان</div>
+      <div class="flags">🇵🇸 غزة × مصر 🇪🇬</div>
+    </div>
+    <div class="card">
+      <div class="seg" role="tablist">
+        <button id="tabCreate" class="on" role="tab">إنشاء غرفة</button>
+        <button id="tabJoin" role="tab">الانضمام لغرفة</button>
+      </div>
+      <div id="panelCreate">
+        <label for="hostName">اسمك</label>
+        <input id="hostName" maxlength="18" autocomplete="off" enterkeyhint="go">
+        <div class="gap"></div>
+        <button class="btn" id="createBtn">إنشاء غرفة ❤️</button>
+      </div>
+      <div id="panelJoin" class="hidden">
+        <label for="guestName">اسمك</label>
+        <input id="guestName" maxlength="18" autocomplete="off" enterkeyhint="next">
+        <label for="joinCode">كود الغرفة</label>
+        <input id="joinCode" maxlength="4" placeholder="A7K2" autocomplete="off" autocapitalize="characters" spellcheck="false" enterkeyhint="go" style="text-align:center;letter-spacing:8px;direction:ltr;font-weight:900;font-size:22px">
+        <div class="gap"></div>
+        <button class="btn" id="joinBtn">انضم للغرفة</button>
+      </div>
+    </div>
+    <button class="btn soft" id="memBtn">💌 ذكريات إبراهيم ويارا</button>
+  </section>
+
+  <!-- LOBBY -->
+  <section id="lobby" class="screen hidden">
+    <div class="card">
+      <div class="roomname" id="roomName">غرفة إبراهيم ❤️ يارا</div>
+      <div class="code" id="roomCode">----</div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn soft sm" id="copyBtn">📋 نسخ الكود</button>
+        <button class="btn soft sm" id="shareBtn">📤 مشاركة الغرفة</button>
+      </div>
+      <div class="status" id="connText">بانتظار الاتصال…</div>
+      <div class="players" id="players"></div>
+      <div class="ready hidden" id="readyMsg">جاهزان للتحدي؟ 🔥</div>
+      <div id="hostControls">
+        <div class="small center">عدد الجولات</div>
+        <div class="chips" id="roundChips">
+          <button class="chip" data-r="3">3</button>
+          <button class="chip on" data-r="5">5</button>
+          <button class="chip" data-r="7">7</button>
+        </div>
+        <div class="small center" style="margin-top:12px">وضع اللعب</div><div class="chips" id="modeChips"><button class="chip on" data-mode="classic">كلاسيك 60ث</button><button class="chip" data-mode="blitz">بليتز 30ث</button><button class="chip" data-mode="relaxed">هادئ 90ث</button></div><div class="notice center" style="margin-top:10px">الفئات: نبات • جماد • حيوان • اسم • بلد • مدينة • أكلة • مهنة • لاعب كرة</div><button class="btn good" id="startBtn" disabled>ابدأ المباراة</button>
+      </div>
+      <div id="guestWaiting" class="notice center hidden"></div>
+      <div class="gap"></div>
+      <button class="btn soft sm" id="leaveBtn">خروج</button>
+    </div>
+  </section>
+
+  <!-- STAGE: countdown + letter wheel -->
+  <section id="stage" class="screen hidden">
+    <div class="stage">
+      <div class="stage-round" id="stageRound"></div>
+      <div class="orb" id="orb"><div class="orb-in"><div class="orb-txt" id="orbTxt">؟</div></div></div>
+      <div class="stage-cap" id="stageCap"></div>
+    </div>
+  </section>
+
+  <!-- GAME -->
+  <section id="game" class="screen hidden">
+    <div class="hud">
+      <span class="pill">الجولة <b id="hudRound">1</b> / <b id="hudTotal">5</b></span>
+      <span class="pill score">نقاطك: <b id="myScore">0</b></span>
+    </div>
+    <div class="playtop">
+      <div class="ring" id="ring">
+        <svg viewBox="0 0 110 110" aria-hidden="true"><circle class="bgc" cx="55" cy="55" r="46"/><circle class="fg" id="ringFg" cx="55" cy="55" r="46"/></svg>
+        <div class="num" id="time">60</div>
+      </div>
+      <div class="letterbox"><small>الحرف</small><b id="gLetter">أ</b></div>
+    </div>
+    <div class="cats" id="cats"></div>
+    <div class="gap"></div>
+    <button class="btn good" id="submitBtn">إرسال الإجابات ✅</button>
+    <div class="status" id="submitStatus" aria-live="polite"></div>
+    <div class="status" id="otherDone"></div>
+    <div class="reacts" data-reacts></div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results" class="screen hidden">
+    <div class="card">
+      <h2 class="center">📊 نتيجة الجولة <span id="resRound"></span></h2>
+      <div class="center small" style="margin:6px 0 12px">الحرف: <b id="resLetter" style="font-size:20px;color:var(--text)"></b></div>
+      <div id="resultBox"></div>
+      <div class="lead" id="leadMsg"></div>
+      <div class="small center" style="margin-top:8px">10 نقاط للكلمة المختلفة، 5 للمكررة، 0 إن لم تبدأ بالحرف أو كانت فارغة. معنى الكلمة يحكم به اللاعبان.</div>
+      <div class="reacts" data-reacts></div>
+      <div class="gap"></div>
+      <button class="btn" id="nextBtn">الجولة التالية ❤️</button>
+      <div class="notice center hidden" id="waitHost"></div>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section id="final" class="screen hidden">
+    <div class="card final">
+      <div class="big" id="finalTitle">❤️ إبراهيم × يارا ❤️</div>
+      <div class="muted">المباراة انتهت</div>
+      <div class="scoreline">
+        <div class="side" id="finalH"></div>
+        <div class="sep">×</div>
+        <div class="side" id="finalG"></div>
+      </div>
+      <div class="lead" id="finalMsg"></div>
+      <div class="kissBox" id="kissBox"></div>
+      <div class="achBox" id="achBox"></div>
+      <div class="small" id="finalSaved" style="margin-top:10px"></div>
+      <div class="reacts" data-reacts></div>
+      <div class="gap"></div>
+      <button class="btn good" id="rematchBtn">مباراة جديدة 🔥</button>
+      <div class="notice center hidden" id="waitRematch"></div>
+      <div class="gap"></div>
+      <div class="row">
+        <button class="btn soft sm" id="finalMemBtn">💌 الذكريات</button>
+        <button class="btn soft sm" id="finalHomeBtn">الرئيسية</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMORIES -->
+  <section id="memories" class="screen hidden">
+    <div class="card">
+      <h2 class="center">💌 ذكريات إبراهيم ويارا</h2>
+      <div id="memList"></div>
+      <div class="gap"></div>
+      <div class="row">
+        <button class="btn soft sm" id="memBack">رجوع</button>
+        <button class="btn soft sm" id="memClear">مسح الذكريات</button>
+      </div>
+      <div class="small center" style="margin-top:10px">الذكريات محفوظة على هذا الجهاز فقط.</div>
+    </div>
+  </section>
+
+  <footer>إبراهيم ❤️ يارا — لعبة مصممة للعب عن بُعد</footer>
+</main>
+
+<style>
+.kissBox,.achBox{margin-top:14px;padding:14px;border-radius:18px;background:color-mix(in srgb,var(--card) 82%,transparent);text-align:center}.kissBox{border:1px solid rgba(255,105,180,.25)}.kissBtn{margin-top:10px;width:100%;border:0;border-radius:14px;padding:13px;font-weight:900;font-size:17px;background:linear-gradient(135deg,#ff5c9a,#ff8fc0);color:white;cursor:pointer}.xpLine{margin-top:8px;font-weight:800}.achievement{display:inline-block;margin:4px;padding:7px 10px;border-radius:12px;background:rgba(255,193,7,.12)}
+</style>
+<script>
+(() => {
+"use strict";
+const $ = id => document.getElementById(id);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+const vibrate = p => { try { navigator.vibrate && navigator.vibrate(p); } catch {} };
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+};
+
+/* ---------- constants ---------- */
+const SCREENS = ["home","lobby","stage","game","results","final","memories"];
+const ROUND_SECS = 60;
+const MODE_SECS = {classic:60, blitz:30, relaxed:90};
+const MODE_NAMES = {classic:"كلاسيك", blitz:"بليتز ⚡", relaxed:"هادئ 🧘"};
+const ALPHABET = [..."ابتثجحخدذرزسشصضطظعغفقكلمنهوي"];
+const LETTERS = ALPHABET.filter(x => !"ذظ".includes(x));
+const CATS = [
+  {k:"plant",icon:"🌿",name:"نبات",noun:"نباتًا"},{k:"thing",icon:"🧱",name:"جماد",noun:"جمادًا"},{k:"animal",icon:"🐾",name:"حيوان",noun:"حيوانًا"},
+  {k:"name",icon:"👤",name:"اسم",noun:"اسمًا"},{k:"country",icon:"🌍",name:"بلد",noun:"بلدًا"},{k:"city",icon:"🏙️",name:"مدينة",noun:"مدينة"},
+  {k:"food",icon:"🍕",name:"أكلة",noun:"أكلة"},{k:"profession",icon:"💼",name:"مهنة",noun:"مهنة"},{k:"football",icon:"⚽",name:"لاعب كرة",noun:"لاعب كرة"}
+];
+const EMOJIS = ["😂","😱","🔥","❤️","👀","😎"];
+const CIRC = 2 * Math.PI * 46;
+
+/* ---------- state ---------- */
+let peer = null, conn = null, isHost = false, room = "";
+let runToken = 0, timerId = null, endAt = 0, lastSec = -1, graceT = null;
+const S = {
+  hostName:"إبراهيم", guestName:"يارا", connected:false, total:5, mode:"classic",
+  round:0, letter:"", used:[], scores:{host:0,guest:0}, lastLetter:"",
+  submitted:{host:false,guest:false}, answers:{}, results:null, calcDone:false, saved:false
+};
+const me = () => isHost ? "host" : "guest";
+const myName = () => isHost ? S.hostName : S.guestName;
+const otherName = () => isHost ? S.guestName : S.hostName;
+
+/* ---------- sound ---------- */
+let audioCtx = null, muted = store.get("nbj_muted", false);
+function ctx(){
+  if(!audioCtx){ const A = window.AudioContext || window.webkitAudioContext; if(A) audioCtx = new A(); }
+  if(audioCtx && audioCtx.state === "suspended") audioCtx.resume();
+  return audioCtx;
+}
+function tone(f, d = .12, type = "sine", v = .15, t0 = 0){
+  if(muted) return; const c = ctx(); if(!c) return;
+  const o = c.createOscillator(), g = c.createGain(), t = c.currentTime + t0;
+  o.type = type; o.frequency.value = f;
+  g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(v, t + .015); g.gain.exponentialRampToValueAtTime(.0001, t + d);
+  o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + d + .03);
+}
+const sfx = {
+  join(){ tone(523,.12,"sine",.16); tone(784,.22,"sine",.16,.11); },
+  tick(i = 0){ tone(520 + (i % 6) * 60, .045, "triangle", .07); },
+  land(){ [523,659,784,1047].forEach((f,i) => tone(f,.2,"triangle",.16,i*.07)); },
+  beep(){ tone(660,.14,"sine",.17); },
+  go(){ tone(988,.35,"triangle",.19); },
+  warn(){ tone(440,.08,"square",.07); },
+  timeup(){ tone(220,.35,"sawtooth",.13); tone(165,.45,"sawtooth",.13,.2); },
+  score(){ [659,784,988].forEach((f,i) => tone(f,.16,"sine",.15,i*.09)); },
+  win(){ [523,659,784,1047,1319].forEach((f,i) => tone(f,.26,"triangle",.17,i*.12)); },
+  react(){ tone(1200,.07,"sine",.09); }
+};
+function paintSound(){ $("soundBtn").textContent = muted ? "🔇" : "🔊"; }
+
+/* ---------- ui helpers ---------- */
+function show(id){
+  SCREENS.forEach(x => $(x).classList.toggle("hidden", x !== id));
+  const el = $(id); el.style.animation = "none"; void el.offsetWidth; el.style.animation = "";
+  window.scrollTo(0, 0);
+}
+let toastT = null;
+function toast(t){ const el = $("toast"); el.textContent = t; el.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("show"), 2000); }
+async function copyText(t){
+  try { await navigator.clipboard.writeText(t); return true; }
+  catch {
+    const ta = document.createElement("textarea"); ta.value = t; ta.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(ta); ta.select(); let ok = false;
+    try { ok = document.execCommand("copy"); } catch {}
+    ta.remove(); return ok;
+  }
+}
+function paintTheme(){
+  const t = document.documentElement.dataset.theme;
+  $("themeBtn").textContent = t === "dark" ? "🌙" : "☀️";
+  $("themeMeta").content = t === "dark" ? "#0b1020" : "#fff3f8";
+}
+function floatEl(text, cls = ""){
+  const el = document.createElement("div"); el.className = "fl " + cls; el.textContent = text;
+  el.style.left = (8 + Math.random() * 68) + "%";
+  $("floaters").appendChild(el); setTimeout(() => el.remove(), 3200);
+}
+function burst(){ for(let i = 0; i < 26; i++) setTimeout(() => floatEl(["❤️","💗","✨","🎉","💖"][i % 5], "heart"), i * 90); }
+function floatReaction(name, emoji){ floatEl(`${name} ${emoji}`); sfx.react(); vibrate(20); }
+
+function buildBackground(){
+  const bg = $("bg"), sym = ["❤️","✨","⭐","💗","🤍"];
+  for(let i = 0; i < 16; i++){
+    const s = document.createElement("span");
+    s.textContent = sym[i % sym.length];
+    s.style.left = Math.random() * 100 + "%";
+    s.style.fontSize = (12 + Math.random() * 18) + "px";
+    s.style.animationDuration = (14 + Math.random() * 16) + "s";
+    s.style.animationDelay = (-Math.random() * 20) + "s";
+    bg.appendChild(s);
+  }
+}
+
+/* ---------- arabic text helpers ---------- */
+const DIAC = /[\u0640\u064B-\u065F\u0670]/g;
+const norm = s => String(s || "").trim().replace(DIAC, "").replace(/[أإآٱ]/g, "ا").replace(/ى/g, "ي").replace(/\s+/g, " ");
+const core = s => { let w = norm(s); if(w.startsWith("ال") && w.length > 3) w = w.slice(2); return w; };
+const startsWithLetter = (ans, letter) => { const L = norm(letter); return !!ans && (norm(ans).charAt(0) === L || core(ans).charAt(0) === L); };
+const keyOf = s => core(s).replace(/ة/g, "ه");
+const cleanName = (v, d) => (String(v || "").trim().slice(0, 18)) || d;
+const cleanCode = v => (v || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 4);
+const makeRoom = () => Array.from({length:4}, () => "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"[Math.floor(Math.random() * 32)]).join("");
+
+/* ---------- networking ---------- */
+function loadPeerLib(){
+  if(window.Peer) return Promise.resolve();
+  const urls = [
+    "https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js",
+    "https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js"
+  ];
+  return new Promise((res, rej) => {
+    let i = 0;
+    (function next(){
+      if(i >= urls.length) return rej(new Error("peer"));
+      const s = document.createElement("script"); s.src = urls[i++];
+      s.onload = () => window.Peer ? res() : next(); s.onerror = next;
+      document.head.appendChild(s);
+    })();
+  });
+}
+const setConn = t => { $("connText").textContent = t; };
+function send(m){ if(conn && conn.open) conn.send(m); }
+function sendLobby(){ send({type:"lobby", hostName:S.hostName, guestName:S.guestName, total:S.total, mode:S.mode}); }
+
+async function createRoom(){
+  S.hostName = cleanName($("hostName").value, "إبراهيم");
+  store.set("nbj_host", S.hostName);
+  isHost = true; S.guestName = "يارا"; S.connected = false;
+  show("lobby"); renderLobby(); setConn("جاري إنشاء الغرفة…");
+  try { await loadPeerLib(); } catch { setConn("تعذر تحميل مكتبة الاتصال. تأكد من الإنترنت ثم أعد المحاولة."); return; }
+  openHostPeer(0);
+}
+function openHostPeer(tries){
+  room = makeRoom(); $("roomCode").textContent = room;
+  if(peer){ try { peer.destroy(); } catch {} }
+  const p = peer = new Peer("NJB-" + room, {debug:0});
+  p.on("open", () => setConn("أرسل الكود إلى " + S.guestName));
+  p.on("connection", c => {
+    if(conn && conn.open){ c.close(); return; }
+    conn = c; setupConnection();
+  });
+  p.on("disconnected", () => { try { p.reconnect(); } catch {} });
+  p.on("error", e => {
+    if(e.type === "unavailable-id" && tries < 4){ openHostPeer(tries + 1); return; }
+    setConn("تعذر إنشاء الغرفة. ارجع وجرّب مرة أخرى.");
+  });
+}
+async function joinRoom(){
+  room = cleanCode($("joinCode").value);
+  if(room.length !== 4){ toast("اكتب كودًا من 4 أحرف أو أرقام"); $("joinCode").focus(); return; }
+  S.guestName = cleanName($("guestName").value, "يارا"); store.set("nbj_guest", S.guestName);
+  isHost = false; S.hostName = "إبراهيم"; S.connected = false;
+  $("roomCode").textContent = room; show("lobby"); renderLobby(); setConn("جاري الاتصال…");
+  try { await loadPeerLib(); } catch { setConn("تعذر تحميل مكتبة الاتصال. تأكد من الإنترنت ثم أعد المحاولة."); return; }
+  if(peer){ try { peer.destroy(); } catch {} }
+  peer = new Peer(undefined, {debug:0});
+  peer.on("open", () => { conn = peer.connect("NJB-" + room, {reliable:true}); setupConnection(); });
+  peer.on("error", e => setConn(e.type === "peer-unavailable" ? "لم أجد هذه الغرفة. تأكد من الكود." : "تعذر الاتصال. تأكد من الإنترنت."));
+  setTimeout(() => { if(!S.connected && !isHost) setConn("تأخر الاتصال… تأكد من الكود ومن أن الغرفة ما زالت مفتوحة."); }, 15000);
+}
+function setupConnection(){
+  conn.on("open", () => {
+    S.connected = true; sfx.join(); vibrate(40);
+    if(isHost){ sendLobby(); } else { send({type:"join", guestName:S.guestName}); }
+    renderLobby();
+  });
+  conn.on("data", onMsg);
+  conn.on("close", () => { S.connected = false; setConn("انقطع الاتصال. أعد فتح الغرفة."); renderLobby(); toast("انقطع الاتصال"); });
+  conn.on("error", () => setConn("حدث خطأ في الاتصال."));
+}
+const cleanAns = a => { const o = {}; CATS.forEach(c => o[c.k] = String((a && a[c.k]) || "").trim().slice(0, 40)); return o; };
+function onMsg(m){
+  if(!m || !m.type) return;
+  switch(m.type){
+    case "kiss": toast("💋 يارا أرسلت لك بوسة ❤️"); floatEl("بوسة من يارا 💋❤️"); break;
+    case "join":
+      if(isHost){ S.guestName = cleanName(m.guestName, "يارا"); S.connected = true; sendLobby(); renderLobby(); }
+      break;
+    case "lobby":
+      if(!isHost){ S.hostName = cleanName(m.hostName, "إبراهيم"); S.guestName = cleanName(m.guestName, "يارا"); S.total = m.total || 5; S.mode = m.mode || "classic"; renderLobby(); }
+      break;
+    case "round":
+      if(!isHost){
+        if(m.first){ S.scores = {host:0, guest:0}; S.used = []; S.saved = false; }
+        S.round = m.round; S.total = m.total; S.letter = m.letter; runRound(!!m.first);
+      }
+      break;
+    case "answer":
+      if(isHost && m.round === S.round){ S.answers.guest = cleanAns(m.answers); S.submitted.guest = true; hostCheck(); }
+      break;
+    case "done":
+      if(m.round === S.round) $("otherDone").textContent = `✅ إجابات ${otherName()} وصلت`;
+      break;
+    case "result":
+      if(!isHost){ S.scores = m.scores; S.lastLetter = m.letter; S.results = m.results; showResults(); }
+      break;
+    case "final":
+      if(!isHost){ S.scores = m.scores; showFinal(); }
+      break;
+    case "react":
+      if(EMOJIS.includes(m.emoji)) floatReaction(otherName(), m.emoji);
+      break;
+  }
+}
+
+/* ---------- lobby ---------- */
+function renderLobby(){
+  $("roomName").textContent = `غرفة ${S.hostName} ❤️ ${S.guestName}`;
+  const hOn = isHost || S.connected, gOn = (!isHost) || S.connected;
+  $("players").innerHTML =
+    `<div class="player ${hOn ? "on" : ""}"><b>🇵🇸 ${esc(S.hostName)}</b><span class="presence"><i class="dot"></i>${hOn ? "متصل ❤️" : "غير متصل"}</span></div>` +
+    `<div class="player ${gOn ? "on" : ""}"><b>🇪🇬 ${esc(S.guestName)}</b><span class="presence"><i class="dot"></i>${gOn ? "متصل ❤️" : "بانتظار الانضمام…"}</span></div>`;
+  const both = S.connected;
+  $("readyMsg").classList.toggle("hidden", !both);
+  $("hostControls").classList.toggle("hidden", !isHost);
+  $("guestWaiting").classList.toggle("hidden", isHost);
+  $("guestWaiting").textContent = both ? `تم الاتصال ❤️ بانتظار ${S.hostName} ليبدأ المباراة (${S.total} جولات).` : "جاري الاتصال…";
+  $("startBtn").disabled = !both;
+  document.querySelectorAll("#roundChips .chip").forEach(c => c.classList.toggle("on", +c.dataset.r === S.total));
+  if(both) setConn("متصل ❤️");
+}
+
+/* ---------- match flow ---------- */
+function pickLetter(){
+  let pool = LETTERS.filter(x => !S.used.includes(x));
+  if(!pool.length){ S.used = []; pool = LETTERS.slice(); }
+  const l = pool[Math.floor(Math.random() * pool.length)]; S.used.push(l); return l;
+}
+function startMatch(){
+  if(!isHost || !S.connected) return;
+  S.round = 0; S.scores = {host:0, guest:0}; S.used = []; S.saved = false;
+  hostNewRound(true);
+}
+function hostNewRound(first){
+  S.round++; S.letter = pickLetter();
+  send({type:"round", round:S.round, total:S.total, letter:S.letter, first});
+  runRound(first);
+}
+async function runRound(first){
+  const my = ++runToken;
+  stopTimer(); clearTimeout(graceT); graceT = null;
+  S.submitted = {host:false, guest:false}; S.answers = {}; S.results = null; S.calcDone = false;
+  show("stage");
+  $("stageRound").textContent = `الجولة ${S.round} / ${S.total}`;
+  const orb = $("orb"), txt = $("orbTxt"), cap = $("stageCap");
+  txt.className = "orb-txt"; orb.classList.remove("spin");
+  if(first){
+    txt.textContent = "❤️"; cap.textContent = "جاهزان للتحدي؟ 🔥"; await sleep(1100); if(my !== runToken) return;
+    for(const n of [3, 2, 1]){
+      txt.textContent = n; txt.className = "orb-txt"; void txt.offsetWidth; txt.className = "orb-txt pop";
+      sfx.beep(); vibrate(20); await sleep(900); if(my !== runToken) return;
+    }
+    txt.textContent = "ابدأ!"; txt.style.fontSize = "64px"; txt.className = "orb-txt pop"; sfx.go(); await sleep(750); if(my !== runToken) return;
+    txt.style.fontSize = "";
+  }
+  cap.textContent = "الحرف يدور…"; orb.classList.add("spin");
+  let delay = 55;
+  for(let i = 0; i < 20; i++){
+    txt.textContent = LETTERS[Math.floor(Math.random() * LETTERS.length)];
+    txt.className = "orb-txt"; void txt.offsetWidth; txt.className = "orb-txt tickA";
+    sfx.tick(i); await sleep(delay); if(my !== runToken) return; delay *= 1.09;
+  }
+  orb.classList.remove("spin");
+  txt.textContent = S.letter; txt.className = "orb-txt pop";
+  cap.textContent = "الحرف هو: " + S.letter; sfx.land(); vibrate([40, 30, 80]);
+  await sleep(1300); if(my !== runToken) return;
+  startGameUI();
+}
+
+/* ---------- game screen ---------- */
+function buildCats(){
+  $("cats").innerHTML = CATS.map((c, i) => `
+    <div class="cat" id="cat_${c.k}">
+      <div class="cat-h"><span class="cat-i">${c.icon}</span>
+        <div><b>${c.name}</b><small id="hint_${c.k}"></small></div>
+        <span class="mark" id="mark_${c.k}"></span></div>
+      <input id="in_${c.k}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="40"
+             enterkeyhint="${i === CATS.length - 1 ? "send" : "next"}" placeholder="اكتب ${c.noun}">
+    </div>`).join("");
+  CATS.forEach((c, i) => {
+    const el = $("in_" + c.k);
+    el.addEventListener("input", () => validateField(c.k));
+    el.addEventListener("focus", () => setTimeout(() => el.scrollIntoView({block:"center", behavior:"smooth"}), 250));
+    el.addEventListener("keydown", e => {
+      if(e.key !== "Enter") return; e.preventDefault();
+      if(i < CATS.length - 1) $("in_" + CATS[i + 1].k).focus(); else submitAnswers(false);
+    });
+  });
+}
+function validateField(k){
+  const v = $("in_" + k).value.trim(), box = $("cat_" + k), mk = $("mark_" + k);
+  const ok = v && startsWithLetter(v, S.letter), bad = v && !ok;
+  box.classList.toggle("ok", !!ok); box.classList.toggle("bad", !!bad);
+  const t = ok ? "✅" : bad ? "⚠️" : "";
+  if(mk.textContent !== t){ mk.textContent = t; mk.classList.remove("pop"); void mk.offsetWidth; if(t) mk.classList.add("pop"); }
+}
+function startGameUI(){
+  $("hudRound").textContent = S.round; $("hudTotal").textContent = S.total;
+  $("myScore").textContent = S.scores[me()]; $("gLetter").textContent = S.letter;
+  $("submitBtn").disabled = false; $("submitStatus").textContent = ""; $("otherDone").textContent = "";
+  CATS.forEach(c => {
+    const el = $("in_" + c.k); el.value = ""; el.disabled = false;
+    $("hint_" + c.k).innerHTML = `اكتب ${c.noun} يبدأ بـ <span class="lt">${esc(S.letter)}</span>`;
+    validateField(c.k);
+  });
+  show("game"); startTimer();
+  const firstCat=CATS[0]; if(firstCat && $("in_"+firstCat.k)) $("in_"+firstCat.k).focus({preventScroll:true});
+}
+function startTimer(){ stopTimer(); endAt = Date.now() + (MODE_SECS[S.mode] || ROUND_SECS) * 1000; lastSec = -1; tickTimer(); timerId = setInterval(tickTimer, 200); }
+function stopTimer(){ clearInterval(timerId); timerId = null; }
+function tickTimer(){
+  const ms = Math.max(0, endAt - Date.now()), sec = Math.ceil(ms / 1000);
+  $("ringFg").style.strokeDashoffset = (CIRC * (1 - ms / ((MODE_SECS[S.mode] || ROUND_SECS) * 1000))).toFixed(2);
+  $("ring").style.setProperty("--tc", sec > 30 ? "var(--good)" : sec > 10 ? "var(--warn)" : "var(--danger)");
+  $("time").textContent = sec;
+  $("ring").classList.toggle("urgent", sec > 0 && sec <= 5);
+  if(sec !== lastSec){ lastSec = sec; if(sec > 0 && sec <= 5){ sfx.warn(); vibrate(40); } }
+  if(ms <= 0){ stopTimer(); sfx.timeup(); vibrate([120, 60, 120]); submitAnswers(true); }
+}
+function submitAnswers(auto){
+  if(S.submitted[me()]) return;
+  stopTimer(); $("ring").classList.remove("urgent");
+  const a = {}; CATS.forEach(c => a[c.k] = $("in_" + c.k).value.trim());
+  S.submitted[me()] = true; $("submitBtn").disabled = true;
+  CATS.forEach(c => $("in_" + c.k).disabled = true);
+  if(document.activeElement) document.activeElement.blur();
+  $("submitStatus").textContent = (auto ? "انتهى الوقت ⏱️ " : "تم الإرسال ❤️ ") + `بانتظار ${otherName()}…`;
+  if(isHost){ S.answers.host = cleanAns(a); send({type:"done", round:S.round}); hostCheck(); }
+  else send({type:"answer", round:S.round, answers:a});
+}
+function hostCheck(){
+  if(!isHost || !S.submitted.host) return;
+  if(!S.submitted.guest){
+    if(!graceT) graceT = setTimeout(() => { graceT = null; if(!S.submitted.guest){ S.submitted.guest = true; S.answers.guest = cleanAns({}); hostCheck(); } }, 10000);
+    return;
+  }
+  clearTimeout(graceT); graceT = null;
+  if(S.calcDone) return; S.calcDone = true; calculateResults();
+}
+
+/* ---------- scoring ---------- */
+function scoreCell(ans, other, letter){
+  if(!ans) return {w:"", p:0, t:"bad", l:"فارغة ➖"};
+  if(!startsWithLetter(ans, letter)) return {w:ans, p:0, t:"bad", l:"لا تبدأ بالحرف ❌"};
+  if(other && startsWithLetter(other, letter) && keyOf(ans) === keyOf(other)) return {w:ans, p:5, t:"dup", l:"مكررة 🔁"};
+  return {w:ans, p:10, t:"ok", l:"مختلفة ✅"};
+}
+function calculateResults(){
+  const h = S.answers.host || cleanAns({}), g = S.answers.guest || cleanAns({});
+  const r = {host:0, guest:0, rows:[]};
+  CATS.forEach(c => {
+    const hc = scoreCell(h[c.k], g[c.k], S.letter), gc = scoreCell(g[c.k], h[c.k], S.letter);
+    r.host += hc.p; r.guest += gc.p; r.rows.push({icon:c.icon, name:c.name, h:hc, g:gc});
+  });
+  S.scores.host += r.host; S.scores.guest += r.guest; S.results = r; S.lastLetter = S.letter;
+  send({type:"result", round:S.round, letter:S.letter, results:r, scores:S.scores});
+  showResults();
+}
+function showResults(){
+  stopTimer(); clearTimeout(graceT); graceT = null;
+  const r = S.results; if(!r) return;
+  const cell = c => `<div class="cell ${c.t}"><span class="w">${esc(c.w) || "—"}</span><span class="p">+${c.p}</span><span class="l">${c.l}</span></div>`;
+  $("resRound").textContent = `${S.round} / ${S.total}`;
+  $("resLetter").textContent = S.letter;
+  $("resultBox").innerHTML =
+    `<div class="vs"><div></div><div class="h">${esc(S.hostName)}</div><div class="h">${esc(S.guestName)}</div>` +
+    r.rows.map(x => `<div class="cl"><div><span>${x.icon}</span>${x.name}</div></div>${cell(x.h)}${cell(x.g)}`).join("") +
+    `<div class="cl">الجولة</div><div class="cell tot"><span class="p">${r.host}</span></div><div class="cell tot"><span class="p">${r.guest}</span></div>` +
+    `<div class="cl">الكلي</div><div class="cell"><span class="p">${S.scores.host}</span></div><div class="cell"><span class="p">${S.scores.guest}</span></div></div>`;
+  const d = S.scores.host - S.scores.guest;
+  $("leadMsg").textContent = d === 0 ? "⚖️ تعادل حتى الآن!" : `🔥 ${d > 0 ? S.hostName : S.guestName} يتقدم بـ ${Math.abs(d)} نقاط!`;
+  const last = S.round >= S.total;
+  $("nextBtn").classList.toggle("hidden", !isHost);
+  $("nextBtn").textContent = last ? "🏁 نتيجة المباراة" : "الجولة التالية ❤️";
+  $("waitHost").classList.toggle("hidden", isHost);
+  $("waitHost").textContent = last ? `بانتظار ${S.hostName} لعرض نتيجة المباراة…` : `بانتظار ${S.hostName} لبدء الجولة التالية…`;
+  show("results"); sfx.score();
+}
+function nextStep(){
+  if(!isHost) return;
+  if(S.round >= S.total){ send({type:"final", scores:S.scores}); showFinal(); }
+  else hostNewRound(false);
+}
+
+/* ---------- final + memories ---------- */
+function saveMatch(){
+  if(S.saved) return; S.saved = true;
+  const n = store.get("nbj_count", 0) + 1; store.set("nbj_count", n);
+  const hist = store.get("nbj_history", []);
+  hist.unshift({n, host:S.hostName, guest:S.guestName, hs:S.scores.host, gs:S.scores.guest, letter:S.lastLetter, ts:Date.now(), rounds:S.total});
+  store.set("nbj_history", hist.slice(0, 100));
+  $("finalSaved").textContent = `💌 حُفظت في الذكريات — مباراة #${n}`;
+}
+function playerProgress(){
+  const hist=store.get("nbj_history",[]); const mine=hist.reduce((a,m)=>a+((isHost?m.hs:m.gs)||0),0);
+  const xp=store.get("nbj_xp",0)+S.scores[me()]; store.set("nbj_xp",xp);
+  const level=Math.floor(xp/100)+1; const ach=[];
+  if(S.scores[me()]>=100) ach.push("🔥 100 نقطة"); if(S.scores[me()]>S.scores[isHost?"guest":"host"]) ach.push("🏆 فائز");
+  if(S.total>=7) ach.push("🎯 سبع جولات"); if(S.scores.host===S.scores.guest) ach.push("🤝 تعادل جميل");
+  return {xp,level,ach};
+}
+function askForKiss(winner){
+  const box=$("kissBox"); if(!box) return;
+  if(winner===myName()){ box.innerHTML='<div style="font-size:24px">💋</div><b>بما إني فزت… أطلب بوسة من يارا ❤️</b><button class="kissBtn" id="kissBtn">💋 أرسل طلب البوسة</button>'; $("kissBtn").onclick=()=>{send({type:"kiss"});floatEl("طلب بوسة 💋");sfx.react();}; }
+  else box.innerHTML='<div style="font-size:24px">💋</div><b>'+esc(winner)+' فاز 😏</b><div class="muted" style="margin-top:5px">واضح إن عليه طلب بوسة 😂❤️</div>';
+}
+function showFinal(){
+  stopTimer(); ++runToken;
+  const {host:hs, guest:gs} = S.scores;
+  $("finalTitle").textContent = `❤️ ${S.hostName} × ${S.guestName} ❤️`;
+  $("finalH").className = "side" + (hs > gs ? " win" : ""); $("finalG").className = "side" + (gs > hs ? " win" : "");
+  $("finalH").innerHTML = `<b>🇵🇸 ${esc(S.hostName)}</b><div class="n">${hs}</div>`;
+  $("finalG").innerHTML = `<b>🇪🇬 ${esc(S.guestName)}</b><div class="n">${gs}</div>`;
+  $("finalMsg").textContent = hs === gs ? "🤝 تعادل جميل بينكما!" : `🏆 فاز ${hs > gs ? S.hostName : S.guestName} بفارق ${Math.abs(hs - gs)} نقاط`;
+  saveMatch();
+  const prog=playerProgress(); $("achBox").innerHTML=`<div class="xpLine">⭐ المستوى ${prog.level} • XP: ${prog.xp}</div>`+(prog.ach.length?prog.ach.map(a=>`<span class="achievement">${a}</span>`).join(""):"");
+  askForKiss(hs===gs?myName():(hs>gs?S.hostName:S.guestName));
+  $("rematchBtn").classList.toggle("hidden", !isHost);
+  $("waitRematch").classList.toggle("hidden", isHost);
+  $("waitRematch").textContent = `${S.hostName} يستطيع بدء مباراة جديدة.`;
+  show("final"); sfx.win(); burst(); vibrate([80, 40, 80, 40, 160]);
+}
+function fmtDate(ts){ try { return new Date(ts).toLocaleDateString("ar-EG-u-nu-latn", {day:"numeric", month:"long", year:"numeric"}); } catch { return new Date(ts).toLocaleDateString(); } }
+function renderMemories(){
+  const h = store.get("nbj_history", []);
+  $("memList").innerHTML = h.length ? h.map(m => `
+    <div class="mem"><div class="t">❤️ مباراة #${m.n}</div>
+      <div>${esc(m.host)}: <span class="${m.hs > m.gs ? "win" : ""}">${m.hs}</span> &nbsp;•&nbsp; ${esc(m.guest)}: <span class="${m.gs > m.hs ? "win" : ""}">${m.gs}</span></div>
+      <div>حرف الجولة الأخيرة: <b>${esc(m.letter || "—")}</b> &nbsp;•&nbsp; ${m.rounds || 5} جولات</div>
+      <div class="muted">📅 ${fmtDate(m.ts)}</div></div>`).join("")
+    : `<div class="notice center" style="margin-top:12px">لا توجد ذكريات بعد. أول مباراة تكملانها ستُحفظ هنا ❤️</div>`;
+  show("memories");
+}
+function paintMemCount(){
+  const n = store.get("nbj_history", []).length;
+  $("memBtn").textContent = n ? `💌 ذكريات إبراهيم ويارا (${n})` : "💌 ذكريات إبراهيم ويارا";
+}
+
+/* ---------- reactions ---------- */
+let lastReact = 0;
+function buildReacts(){
+  document.querySelectorAll("[data-reacts]").forEach(box => {
+    box.innerHTML = EMOJIS.map(e => `<button type="button" aria-label="${e}">${e}</button>`).join("");
+    box.querySelectorAll("button").forEach((b, i) => b.addEventListener("click", () => {
+      const now = Date.now(); if(now - lastReact < 350) return; lastReact = now;
+      send({type:"react", emoji:EMOJIS[i]}); floatEl("أنت " + EMOJIS[i]); sfx.react();
+    }));
+  });
+}
+
+/* ---------- home tabs ---------- */
+function setTab(t){
+  $("tabCreate").classList.toggle("on", t === "create"); $("tabJoin").classList.toggle("on", t === "join");
+  $("panelCreate").classList.toggle("hidden", t !== "create"); $("panelJoin").classList.toggle("hidden", t !== "join");
+}
+
+/* ---------- init ---------- */
+function init(){
+  document.documentElement.dataset.theme = store.get("nbj_theme", "dark");
+  paintTheme(); paintSound(); buildBackground(); buildCats(); buildReacts(); paintMemCount();
+  $("ringFg").style.strokeDasharray = CIRC.toFixed(2);
+  $("hostName").value = store.get("nbj_host", "إبراهيم");
+  $("guestName").value = store.get("nbj_guest", "يارا");
+  loadPeerLib().catch(() => {});
+
+  document.addEventListener("pointerdown", () => ctx(), {once:true});
+  $("themeBtn").addEventListener("click", () => {
+    const t = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = t; store.set("nbj_theme", t); paintTheme();
+  });
+  $("soundBtn").addEventListener("click", () => { muted = !muted; store.set("nbj_muted", muted); paintSound(); if(!muted) sfx.beep(); });
+  $("tabCreate").addEventListener("click", () => setTab("create"));
+  $("tabJoin").addEventListener("click", () => setTab("join"));
+  document.querySelectorAll("#modeChips .chip").forEach(b => b.addEventListener("click", () => { if(!isHost) return; document.querySelectorAll("#modeChips .chip").forEach(x=>x.classList.remove("on")); b.classList.add("on"); S.mode=b.dataset.mode; sendLobby(); renderLobby(); }));
+$("createBtn").addEventListener("click", createRoom);
+  $("joinBtn").addEventListener("click", joinRoom);
+  $("hostName").addEventListener("keydown", e => { if(e.key === "Enter") createRoom(); });
+  $("guestName").addEventListener("keydown", e => { if(e.key === "Enter") $("joinCode").focus(); });
+  $("joinCode").addEventListener("input", e => e.target.value = cleanCode(e.target.value));
+  $("joinCode").addEventListener("keydown", e => { if(e.key === "Enter") joinRoom(); });
+  $("memBtn").addEventListener("click", renderMemories);
+  $("finalMemBtn").addEventListener("click", renderMemories);
+  $("memBack").addEventListener("click", () => { paintMemCount(); show(S.round && $("final") && S.saved ? "final" : "home"); });
+  $("memClear").addEventListener("click", () => {
+    if(confirm("مسح كل الذكريات المحفوظة على هذا الجهاز؟")){ store.set("nbj_history", []); store.set("nbj_count", 0); renderMemories(); paintMemCount(); }
+  });
+  $("copyBtn").addEventListener("click", async () => toast(await copyText(room) ? "تم نسخ الكود 📋" : "تعذر النسخ، انسخ الكود يدويًا"));
+  $("shareBtn").addEventListener("click", async () => {
+    const text = `تعالي نلعب نبات جماد حيوان ❤️\nكود الغرفة: ${room}`;
+    const url = /^https?:/.test(location.href) ? location.href : undefined;
+    if(navigator.share){ try { await navigator.share({title:"إبراهيم ❤️ يارا", text, url}); return; } catch(e){ if(e && e.name === "AbortError") return; } }
+    toast(await copyText(text + (url ? "\n" + url : "")) ? "تم نسخ رسالة الدعوة 📤" : "تعذرت المشاركة");
+  });
+  $("roundChips").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if(!b || !isHost) return;
+    S.total = +b.dataset.r; renderLobby(); sendLobby();
+  });
+  $("startBtn").addEventListener("click", startMatch);
+  $("leaveBtn").addEventListener("click", () => location.reload());
+  $("submitBtn").addEventListener("click", () => submitAnswers(false));
+  $("nextBtn").addEventListener("click", nextStep);
+  $("rematchBtn").addEventListener("click", startMatch);
+  $("finalHomeBtn").addEventListener("click", () => location.reload());
+}
+init();
+})();
+</script>
+</body>
+</html>
